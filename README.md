@@ -36,6 +36,27 @@ Before you begin, ensure you have the following installed:
 - **Android SDK** (for Android testing)
 - **Xcode** (for iOS testing on macOS)
 
+> macOS 提示：如果未显式设置 `ANDROID_HOME`，本服务会尝试使用默认路径 `/Users/jqwang/Library/Android/sdk`，并自动将 `<ANDROID_HOME>/platform-tools` 加入 `PATH`；若默认路径不存在，请手动设置 `ANDROID_HOME` 并确保 `platform-tools` 在 `PATH` 中。
+
+
+## 🧰 Quick Installation Guide
+
+1. **Clone 本仓库**（或下载发布包）：`git clone https://github.com/appium/appium-mcp.git`
+2. **安装依赖**：在仓库根目录执行 `npm install`
+3. **构建 + 链接**（用于全局 `mcp-appium` 命令）：
+   - `npm run build`
+   - `npm link`（或 `npm install -g .`）
+4. **环境要求**：
+   - Node.js ≥ 22、npm ≥ 10
+   - JDK ≥ 8、Android SDK（已接受许可）、Xcode（如需 iOS）
+   - 可选：`CAPABILITIES_CONFIG` 指向你的 `capabilities.json`
+   - 若 ANDROID_HOME 未设且默认路径存在，`mcp-appium` 会自行设置；否则请手动配置
+5. **接入 Codex 或其他 MCP 客户端**：
+   - 例如：`codex mcp add appium -- mcp-appium`
+   - 如果希望通过 SSE 暴露：`mcp-appium --sse --port=7099`
+
+完成后即可在 MCP 客户端中看到 `appium` 工具列表，按需运行 `select_platform → create_session → appium_*` 等工具来执行移动端自动化任务。
+
 ### Mobile Testing Setup
 
 #### Android

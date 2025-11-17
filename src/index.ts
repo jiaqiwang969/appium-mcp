@@ -2,6 +2,7 @@
 
 import server from './server.js';
 import log from './locators/logger.js';
+import { ensureAndroidEnv } from './env.js';
 
 // Parse command line arguments
 const args = process.argv.slice(2);
@@ -12,6 +13,7 @@ const port =
 // Start the server with the appropriate transport
 async function startServer(): Promise<void> {
   log.info('Starting MCP Appium MCP Server...');
+  ensureAndroidEnv();
 
   try {
     if (useSSE) {
